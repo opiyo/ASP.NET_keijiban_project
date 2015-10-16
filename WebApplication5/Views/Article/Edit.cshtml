@@ -1,0 +1,40 @@
+﻿@model WebApplication5.Models.Memo
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>編集</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.LabelFor(model => model.Title)
+    <br />
+    @Html.TextBoxFor(
+        model => model.Title,
+        new { size = 30 }
+    )
+    <br />
+    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    <br />
+    @Html.LabelFor(model => model.Body)
+    <br />
+    @Html.TextAreaFor(model => model.Body,
+        new { @cols = 40, @rows = 5 }
+    )
+    <br />
+    @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.HiddenFor(model => model.MemoId, new { @Value = ViewBag.MemoId })
+    @Html.HiddenFor(model => model.UserId, new { @Value = ViewBag.UserId })
+    @Html.HiddenFor(model => model.CreatedAt, new { @Value = ViewBag.CreatedAt })
+
+    <input type="submit" value="更新">
+    <button type="button" onclick="location.href='@Url.Action("Details", "Article", new { id=Model.MemoId })'">戻る</button>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

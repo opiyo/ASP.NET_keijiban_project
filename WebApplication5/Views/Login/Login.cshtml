@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>ログイン</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.Label("id", "ID")
+    @Html.TextBox("id", "", new { @class = "form-control"})
+    @Html.Label("password", "Password")
+    @Html.TextBox("password", "", new { @class = "form-control ", type = "password" })
+    <br />
+    <input type="submit" value="送信" />
+}

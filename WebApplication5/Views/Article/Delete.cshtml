@@ -1,0 +1,16 @@
+﻿@model WebApplication5.Models.Memo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>削除</h2>
+
+<h4>削除しますか？</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="削除">
+    <button type="button" onclick="location.href='@Url.Action("Details", "Article", new { id=Model.MemoId })'">戻る</button>
+}

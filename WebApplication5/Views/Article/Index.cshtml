@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplication5.Models.Memo>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>記事一覧</h2>
+<p>
+    <button type="button" onclick="location.href='@Url.Action("Create", "Article")'">新規作成</button>
+
+</p>
+
+
+@foreach (var item in Model.Reverse())
+{
+    if (item.DeleteFlg)
+    {
+        continue;
+    }
+    <hr />
+    @Html.DisplayNameFor(model => model.MemoId)
+    <text>:</text>
+    @Html.DisplayFor(modelItem => item.MemoId)
+    <br />
+
+    @Html.DisplayNameFor(model => model.UpdateAt)
+    <text>:</text>
+    @Html.DisplayFor(modelItem => item.UpdateAt)
+    <br />
+
+    @Html.DisplayNameFor(model => model.User.UserName)
+    <text>:</text>
+    @Html.DisplayFor(modelItem => item.User.UserName)
+    <br />
+
+    @Html.DisplayNameFor(model => model.Title)
+    <text>:</text>
+    @Html.DisplayFor(modelItem => item.Title)
+    <br />
+    <br />
+    <button type="button" onclick="location.href='@Url.Action("Details", "Article", new { id=item.MemoId })'">詳細</button>
+    <br />
+}

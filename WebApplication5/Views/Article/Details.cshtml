@@ -1,0 +1,41 @@
+﻿@model WebApplication5.Models.Memo
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>詳細</h2>
+
+@Html.DisplayNameFor(model => model.MemoId)
+<text>:</text>
+@Html.DisplayFor(model => model.MemoId)
+<br />
+
+@Html.DisplayNameFor(model => model.User.UserName)
+<text>:</text>
+@Html.DisplayFor(model => model.User.UserName)
+<br />
+
+@Html.DisplayNameFor(model => model.Title)
+<text>:</text>
+@Html.DisplayFor(model => model.Title)
+<br />
+
+@Html.DisplayNameFor(model => model.Body)
+<text>:</text>
+@Html.Raw(Model.Body.Replace("\n","<br />"))
+<br />
+@Html.DisplayNameFor(model => model.CreatedAt)
+<text>:</text>
+@Html.DisplayFor(model => model.CreatedAt)
+<br />
+
+@Html.DisplayNameFor(model => model.UpdateAt)
+<text>:</text>
+@Html.DisplayFor(model => model.UpdateAt)
+<br />
+<br />
+
+<button type="button" onclick="location.href='@Url.Action("Edit", "Article", new { id=Model.MemoId })'">編集</button>
+<button type="button" onclick="location.href='@Url.Action("Delete", "Article", new { id=Model.MemoId })'">削除</button>
+<br /><br />
+<button type="button" onclick="location.href='@Url.Action("Index", "Article")'">戻る</button>
